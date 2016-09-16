@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-require 'spec_helper'
-
 describe '#run_this' do
   let(:job_id) { nil }
 

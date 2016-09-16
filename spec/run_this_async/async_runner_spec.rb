@@ -57,7 +57,7 @@ describe RunThisAsync::AsyncRunner do
         let(:callee) { klass.to_s }
 
         it 'calls the klass' do
-          expect(klass).to receive(:method)
+          expect(klass).to receive(method)
 
           subject.perform(expected_job_id, callee, method)
         end
