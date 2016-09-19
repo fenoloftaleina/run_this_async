@@ -1,5 +1,8 @@
 require 'run_this_async/version'
+require 'concord'
+require 'procto'
 require 'run_this_async/async_runner'
+require 'run_this_async/callee/encoder'
 
 module Kernel
   def run_this(expected_job_id = nil)
@@ -10,7 +13,7 @@ end
 module RunThisAsync
   class AsyncPlan < BasicObject
     def initialize(callee, expected_job_id)
-      @callee = callee.is_a?(::Class) ? callee.to_s : callee
+      @callee = ::RunThisAsync::Callee::Encoder.call(callee)
       @expected_job_id = expected_job_id
       @methods_to_call = []
       @with_args = []

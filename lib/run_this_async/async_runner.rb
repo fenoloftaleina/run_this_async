@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'run_this_async/callee/decoder'
 
 class RunThisAsync::AsyncRunner
   include ::Sidekiq::Worker
@@ -6,9 +7,7 @@ class RunThisAsync::AsyncRunner
   def perform(expected_job_id, callee, method, args = nil)
     return if unexpected_job_id?(expected_job_id)
 
-    if callee.is_a?(String)
-      callee = Object.const_get(callee)
-    end
+    callee = RunThisAsync::Callee::Decoder.call(callee)
 
     if method.is_a?(Array)
       send_chain_of_methods(callee, method, args)

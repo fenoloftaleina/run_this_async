@@ -22,4 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "sidekiq", "~> 4.0"
+  spec.add_development_dependency "concord", "~> 0.1.4"
+  spec.add_development_dependency "procto", "~> 0.0.3"
 end
