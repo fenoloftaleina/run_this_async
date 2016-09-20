@@ -4,9 +4,9 @@ module RunThisAsync::Callee
     include Procto.call
 
     def call
-      if callee.is_a?(String)
+      if callee.instance_of?(String)
         return class_from_string
-      elsif callee.is_a?(RunThisAsync::ActiveRecordPointer)
+      elsif callee.instance_of?(RunThisAsync::ActiveRecordPointer)
         return activerecord_model
       end
 

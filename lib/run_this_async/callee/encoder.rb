@@ -4,7 +4,7 @@ module RunThisAsync::Callee
     include Procto.call
 
     def call
-      if callee.is_a?(Class)
+      if callee.instance_of?(Class)
         return stringified_class
       elsif callee.is_a?(ActiveRecord::Base)
         return activerecord_pointer
