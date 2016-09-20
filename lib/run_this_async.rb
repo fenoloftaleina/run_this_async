@@ -3,6 +3,7 @@ require 'concord'
 require 'procto'
 require 'run_this_async/async_runner'
 require 'run_this_async/callee/encoder'
+require 'run_this_async/callee/active_record_pointer'
 
 module Kernel
   def run_this(expected_job_id = nil)
