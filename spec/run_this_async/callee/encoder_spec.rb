@@ -22,21 +22,4 @@ describe RunThisAsync::Callee::Encoder do
 
     it_behaves_like 'encoder'
   end
-
-  context 'activerecord model callee' do
-    context 'encodes as an ActiveRecordPointer' do
-      class X < ActiveRecord::Base; end
-
-      let(:encoded_callee) do
-        RunThisAsync::ActiveRecordPointer.new(callee.class, callee.id)
-      end
-      let(:callee) { X.new }
-
-      before do
-        allow(callee).to receive(:id).and_return(123)
-      end
-
-      it_behaves_like 'encoder'
-    end
-  end
 end

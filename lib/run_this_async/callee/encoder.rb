@@ -5,21 +5,10 @@ module RunThisAsync::Callee
 
     def call
       if callee.instance_of?(Class)
-        return stringified_class
-      elsif callee.is_a?(ActiveRecord::Base)
-        return activerecord_pointer
+        return callee.to_s
       end
 
       callee
-    end
-
-    private
-    def stringified_class
-      callee.to_s
-    end
-
-    def activerecord_pointer
-      RunThisAsync::ActiveRecordPointer.new(callee.class, callee.id)
     end
   end
 end
